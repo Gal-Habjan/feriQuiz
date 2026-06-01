@@ -1963,7 +1963,7 @@ function openPdfModal(qi) {
     wrap.innerHTML = '<iframe id="pdfFrame" src=""></iframe>';
     const frame = document.getElementById('pdfFrame');
     const loadPage = (p) => {
-      frame.src = `main.pdf#page=${p}`;
+      frame.src = `powerpoints/main.pdf#page=${p}`;
       label.textContent = `· stran ${p}`;
       chips.querySelectorAll('.pdf-page-chip').forEach(c => c.classList.remove('active'));
       chips.querySelector(`[data-page="${p}"]`)?.classList.add('active');
