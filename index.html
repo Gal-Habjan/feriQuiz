@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="sl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>FeriQuiz</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<!-- SPLASH -->
+		<div id="splash">
+			<h1 class="splash-title">FeriQuiz</h1>
+			<p class="splash-sub" id="splashSub">
+				Interaktivni kviz. Izberi predmet in poglavje.
+			</p>
+			<div id="subjectTabs" class="subject-tabs"></div>
+			<div class="mode-toggle">
+				<button
+					class="mode-btn active"
+					id="modeMCQ"
+					onclick="setMode('mcq')"
+				>
+					Večkratni izbor
+				</button>
+				<button
+					class="mode-btn"
+					id="modeOpen"
+					onclick="setMode('open')"
+				>
+					Odprti odgovori
+				</button>
+				<button
+					class="mode-btn"
+					id="modeRacunske"
+					onclick="setMode('racunske')"
+				>
+					Računske naloge
+				</button>
+			</div>
+			<div class="chapter-grid" id="chapterGrid"></div>
+			<button class="btn-all" id="btnAll" onclick="startQuiz('all')">
+				▶ Reši vse skupaj
+			</button>
+		</div>
+
+		<!-- QUIZ -->
+		<div id="quiz">
+			<div class="quiz-header">
+				<button class="back-btn" onclick="goHome()">← DOMOV</button>
+				<div class="quiz-title-bar">
+					<div class="quiz-chapter-name" id="quizChapterName">
+						Kviz
+					</div>
+					<div class="quiz-progress-text" id="quizProgressText">
+						Vprašanje 1 / 20
+					</div>
+				</div>
+				<div class="progress-bar-wrap">
+					<div
+						class="progress-bar-fill"
+						id="progressFill"
+						style="width: 0%"
+					></div>
+				</div>
+				<div class="score-display" id="scoreDisplay">0 / 0</div>
+			</div>
+			<div class="quiz-body" id="quizBody"></div>
+		</div>
+
+		<!-- RESULTS -->
+		<div
+			id="results"
+			style="
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				padding: 40px 20px;
+				text-align: center;
+			"
+		>
+			<div class="result-ring" id="resultRing">
+				<div class="result-pct" id="resultPct">0%</div>
+			</div>
+			<h2 class="result-title" id="resultTitle">Rezultat</h2>
+			<p class="result-sub" id="resultSub"></p>
+			<div class="result-btns">
+				<button class="btn-retry" id="retryBtn">↺ Poskusi znova</button>
+				<button class="btn-home" onclick="goHome()">⌂ Domov</button>
+			</div>
+		</div>
+
+		<!-- PDF MODAL -->
+		<div id="pdfModal" class="pdf-modal" onclick="closePdfModal()">
+			<div class="pdf-modal-inner" onclick="event.stopPropagation()">
+				<div class="pdf-modal-header">
+					<div class="pdf-modal-meta">
+						<span
+							id="pdfFileName"
+							style="color: var(--text-muted)"
+						></span>
+						<span
+							id="pdfPageLabel"
+							style="color: var(--accent); margin-left: 8px"
+						></span>
+						<div class="pdf-page-chips" id="pdfPageChips"></div>
+					</div>
+					<button class="pdf-close-btn" onclick="closePdfModal()">
+						×
+					</button>
+				</div>
+				<div class="pdf-frame-wrap" id="pdfFrameWrap">
+					<iframe id="pdfFrame" src=""></iframe>
+				</div>
+			</div>
+		</div>
+
+		<script src="data/psis/mcq.js"></script>
+		<script src="data/psis/open.js"></script>
+		<script src="data/psis/racunske.js"></script>
+		<script src="data/jz/mcq.js"></script>
+		<script src="data/jz/open.js"></script>
+		<script src="data/jz/racunske.js"></script>
+		<script src="data/subjects.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
