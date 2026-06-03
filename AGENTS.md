@@ -116,6 +116,54 @@ If only one subject exists, the subject tab bar is hidden by CSS automatically.
 - Options are shuffled at runtime so the correct answer is never in a fixed position.
 - **Important:** Every question in an `mcqChapters` array must have an `opts` field. Questions without `opts` are silently skipped by `buildFlat()`. Do not mix open-format questions into MCQ chapters.
 
+---
+
+## Writing good MCQ options
+
+The quality of distractors (wrong answers) determines whether a question is worth anything. Follow these rules strictly.
+
+### The cardinal rule: all four options must look equally plausible at a glance
+
+A student who does not know the answer should not be able to eliminate any option on first read. The correct answer must not stand out by being longer, more specific, or more domain-rich than the others.
+
+### Correct answer
+
+- State the fact directly and precisely. No hedging language ("sometimes", "often") that would signal uncertainty.
+- Length: 1–3 sentences, same ballpark as the wrong options.
+- Do not make it the only option that uses domain-specific vocabulary — all four should.
+
+### Wrong answers (distractors)
+
+Each distractor must target a specific, realistic misconception or slip. Use these patterns:
+
+| Pattern | Example |
+|---------|---------|
+| **Swap key terms** | Say `q(i|j,l,m)` describes a translation probability when it is actually the alignment probability (and vice-versa). |
+| **Almost-right formula** | Change `–` to `+` in PMI difference, or swap numerator/denominator in MLE. |
+| **Adjacent concept** | Use the right domain vocabulary but describe a neighbouring concept: describe what IBM 2 does when asked about IBM 1, or describe `perceptron` when asked about `SVM`. |
+| **True statement, wrong context** | A factually correct statement that does not answer the specific question asked. |
+| **Plausible-sounding nonsense** | Combines domain terms in a grammatically valid but semantically incorrect way. |
+
+### Length and formatting
+
+- All four options should be within ±30% of each other in word count.
+- Do not let the correct answer be the only one with a sub-clause, example, or parenthetical.
+- If the correct answer includes an example (e.g., "enostavnost uporabe tiskalnika"), include comparably specific examples in at least one distractor.
+
+### Explanations (third element of each opt)
+
+- Wrong-answer explanations should name the **specific mistake** being targeted, not just restate what the right answer is.
+- Avoid: `"To je strojno prevajanje."` — this tells the student exactly what topic the correct answer belongs to, making elimination trivial.
+- Prefer: `"To opisuje transferni pristop, ki doda prenos drevesa – neposredno prevajanje tega ne počne."` — this requires knowledge to evaluate.
+- The explanation for the correct answer should say why it is right, not just confirm it.
+
+### Anti-patterns to avoid
+
+- **Obvious outsider**: a distractor that references a completely different chapter topic (e.g., asking about sentiment analysis and having "To je IBM Model 1" as a distractor). Every distractor should be plausible within the chapter being tested.
+- **Length signal**: the correct answer is consistently the longest option.
+- **Specificity signal**: the correct answer is the only one with a formula, proper noun, or page reference.
+- **Trivially wrong**: "Odloči se naključno" or "Ni mogoče" — these are never the answer to a factual question and students know it immediately.
+
 ### Open-ended / Računske question
 
 Both open and računske questions share the same format:
