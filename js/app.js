@@ -23,6 +23,7 @@ function buildFlat(chapters, limit) {
 	chapters.forEach((ch) => {
 		const shuffledQs = shuffle(ch.questions);
 		shuffledQs.forEach((q) => {
+			if (!q.opts) return;
 			const indexed = q.opts.map((o) => ({
 				text: o[0],
 				correct: o[1],
