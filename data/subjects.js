@@ -15,12 +15,12 @@ var SUBJECTS = [
 		racunskeChapters: PSIS_RACUNSKE,
 	},
 	{
-		id: "jz",
-		name: "JZ",
+		id: "jt",
+		name: "JT",
 		fullName: "Jezikovne tehnologije",
 		pdf: "powerpoints/prosojnice.pdf",
-		mcqChapters: JZ_MCQ,
-		openChapters: JZ_OPEN,
-		racunskeChapters: JZ_RACUNSKE,
+		mcqChapters: JT_MCQ,
+		openChapters: JT_OPEN,
+		racunskeChapters: JT_RACUNSKE,
 	},
 ];
